@@ -13,7 +13,6 @@
 
 
 # imports from python standard library
-from __future__ import print_function
 import grading
 import imp
 import optparse
@@ -115,7 +114,7 @@ def setModuleName(module, filename):
         elif type(o) == classType:
             setattr(o, '__file__', filename)
             # TODO: assign member __file__'s?
-        #print i, type(o)
+        #print(i, type(o))
 
 
 #from cStringIO import StringIO
@@ -127,7 +126,7 @@ def loadModuleString(moduleSource):
     #f = StringIO(moduleCodeDict[k])
     #tmp = imp.load_module(k, f, k, (".py", "r", imp.PY_SOURCE))
     tmp = imp.new_module(k)
-    #exec moduleCodeDict[k] in tmp.__dict__
+    exec(moduleCodeDict[k] in tmp.__dict__)
     setModuleName(tmp, k)
     return tmp
 
